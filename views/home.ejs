@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d8edbe4843.js" crossorigin="anonymous"></script>
+    <title>
+        <%= title%>
+    </title>
+</head>
+
+<body>
+    <h1>
+        TODO App
+    </h1>
+
+    <div>
+        <ul>
+            <% for(let i of task_list){%>
+                <input type="checkbox" id=<% i.id %>>
+                <li>
+                    <h3>
+                        <%= i.discription %>
+                    </h3>
+                    <p>
+                        <%= i.category%>
+                    </p>
+                    <p>
+                        <%= i.date%>
+                    </p>
+                </li>
+                <%}%>
+        </ul>
+    </div>
+
+
+    <form action="/tasks/addTask" method="POST">
+        <label for="discription">DISCRIPTION</label>
+        <input type="text" name="discription" placeholder="What do you Need to do">
+        <label for="category">CATEGORY</label>
+        <select name="category" id="category">
+            <option value="">Choose a category</option>
+            <option value="personal">Personal</option>
+            <option value="work">Work</option>
+            <option value="cleaning">Cleaning</option>
+            <option value="other">Other</option>
+        </select>
+        <lable for="duedate">DUE DATE</lable>
+        <input type="date" name="date">
+
+        <button type="submit">ADD TASK</button>
+        <div class="delete-button">
+            <a href="/tasks/delete">
+                <i class="fas fa-window-close"></i>
+            </a>
+        </div>
+    </form>
+    <script type="text/javascript" src='/JS/home.js'></script>
+</body>
+
+</html>
